@@ -31,32 +31,31 @@ fields = {
     # pid (Passport ID) - a nine-digit number, including leading zeroes.
     'pid': lambda f: match("\d{9}$", f),
 
-    # cid (Country ID) - ignored, missing or not.
-}
+        # cid (Country ID) - ignored, missing or not.
+    }
 
-def valid (passport):
-    for f in passport:
-        if f != "cid" and not fields[f](passport[f]): return False
-    return True
+    def valid (passport):
+        for f in passport:
+            if f != "cid" and not fields[f](passport[f]): return False
+        return True
 
-def validate (valid = lambda p: True):
-    validated = []
-    check = lambda p: not fields - p.keys() and valid(p)
-    with open(sys.argv[1]) as f:
-        passport = {}
-        for line in f:
-            line = line.strip()
-            if not line:
-                if check(passport): validated.append(passport)
-                passport = {}
-            else:
-                passport.update([ x.split(':') for x in line.split() ])
-        if check(passport): validated.append(passport)
-    return validated
+    def validate (valid = lambda p: True):
+        validated = []
+        check = lambda p: not fields - p.keys() and valid(p)
+        with open(sys.argv[1]) as f:
+            passport = {}
+            for line in f:
+                line = line.strip()
+                if not line:
+                    if check(passport): validated.append(passport)
+                    passport = {}
+                else:
+                    passport.update([ x.split(':') for x in line.split() ])
+            if check(passport): validated.append(passport)
+        return validated
 
 # part 1
 print(len(validate()))
-
 # part 2
 print(len(validate(valid)))
 # or

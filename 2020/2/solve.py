@@ -24,11 +24,11 @@ with open(sys.argv[1]) as f:
               for policy, password in [ map(lambda x: x.strip(),
                                             line.split(':'))
                                         for line in f ]]
-    # part one
+    # part 1
     print(len([ (policy, password)
                 for policy, password in input
                 if check_one(policy, password) ]))
-    # part two
+    # part 2
     print(len([ (policy, password)
                 for policy, password in input
                 if check_two(policy, password) ]))

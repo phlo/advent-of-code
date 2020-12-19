@@ -27,5 +27,7 @@ with open(sys.argv[1]) as f:
                 inner.setdefault(bags[0], {}).update({bag: num})
                 outer.setdefault(bag, {}).update({bags[0]: num})
     bag = "shiny gold"
+    # part 1
     print(dfs(outer, bag, lambda x, _, __: x, set([bag])) - 1)
+    # part 2
     print(dfs(inner, bag, lambda x, node, child: x * inner[node][child]) - 1)

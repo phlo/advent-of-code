@@ -29,8 +29,8 @@ def check (slope):
             x = (x + slope[0]) % width
     return trees
 
-# part one
+# part 1
 print(check((3, 1)))
-# part two
+# part 2
 print(reduce(lambda x, y: x * y,
              map(check, [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)])))
