@@ -11,4 +11,4 @@ solve: solve.hs
 
 .PHONY: clean
 clean:
-	rm -rf solve *.{hi,o}
+	rm -rf *.{hi,o}
