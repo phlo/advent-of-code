@@ -1,14 +1,5 @@
-.PHONY: run
-run: solve
-	./$< 25 input
+include ../haskell.mk
 
-.PHONY: test
-test: solve
-	./$< 5 test
+run: ARGS = 25
 
-solve: solve.hs
-	ghc -o $@ $^
-
-.PHONY: clean
-clean:
-	rm -rf *.{hi,o}
+test: ARGS = 5
