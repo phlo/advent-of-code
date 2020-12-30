@@ -6,9 +6,9 @@ run: solve
 test: solve
 	./$< $(strip $(ARGS) test)
 
-solve: solve.hs
-	ghc -o $@ $^
-
 .PHONY: clean
 clean:
 	rm -rf *.{hi,o}
+
+%: %.hs
+	ghc -o $@ $^
