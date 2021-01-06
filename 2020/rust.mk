@@ -1,17 +1,20 @@
-RFLAGS = -C opt-level=3
+CFLAGS = -C opt-level=3
 
 .PHONY: run
+run: ARGS = input
 run: solve
-	./$< $(strip $(ARGS) input)
+	./$< $(ARGS)
 
 .PHONY: test
+test: ARGS = test
 test: solve
-	./$< $(strip $(ARGS) test)
+	./$< $(ARGS)
 
 .PHONY: debug
 debug: RFLAGS = -g
+debug: ARGS = test
 debug: solve
-	rust-gdb --args $< $(strip $(ARGS) test)
+	rust-gdb --args $< $(ARGS)
 
 %: %.rs
-	rustc $(RFLAGS) $^
+	rustc $(CFLAGS) $^
