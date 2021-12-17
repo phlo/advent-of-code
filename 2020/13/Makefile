@@ -1,1 +1,1 @@
-../haskell.mk
+../../haskell.mk

@@ -1,1 +1,1 @@
-../rust.mk
+../../rust.mk
