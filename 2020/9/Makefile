@@ -1,5 +1,1 @@
-include ../haskell.mk
-
-run: ARGS = 25
-
-test: ARGS = 5
+../../haskell.mk

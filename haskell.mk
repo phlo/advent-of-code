@@ -1,18 +1,7 @@
-CFLAGS = -O2 -optc-O3
+include ../../common.mk
 
-.PHONY: run
-run: ARGS = input
-run: solve
-	./$< $(ARGS)
-
-.PHONY: test
-test: ARGS = test
-test: solve
-	./$< $(ARGS)
-
-.PHONY: clean
-clean:
-	rm -rf *.{hi,o}
+FLAGS = -O2 -optc-O3
+CLEAN = *.{hi,o}
 
 %: %.hs
-	ghc $(CFLAGS) -o $@ $^
+	ghc $(FLAGS) -o $@ $^

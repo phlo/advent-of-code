@@ -1,2 +1,2 @@
-run: $(shell ls -1dv */)
-	for i in $^; do $(MAKE) -C $$i; done
+clean: $(shell ls -1d */*)
+	for i in $^; do $(MAKE) -C $$i $@; done

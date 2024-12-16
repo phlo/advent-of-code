@@ -1,20 +1,12 @@
-CFLAGS = -C opt-level=3
+include ../../common.mk
 
-.PHONY: run
-run: ARGS = input
-run: solve
-	./$< $(ARGS)
-
-.PHONY: test
-test: ARGS = test
-test: solve
-	./$< $(ARGS)
+FLAGS = -C opt-level=3
 
 .PHONY: debug
-debug: RFLAGS = -g
+debug: FLAGS = -g
 debug: ARGS = test
 debug: solve
 	rust-gdb --args $< $(ARGS)
 
 %: %.rs
-	rustc $(CFLAGS) $^
+	rustc $(FLAGS) $^
